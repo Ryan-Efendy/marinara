@@ -1,6 +1,6 @@
 {
   "app_name": {
-    "message": "Marinara: Pomodoro® Assistant",
+    "message": "Marinara: Pomodoro® Assistant [Ryan]",
     "description": "The name of the application. Shown in the web store."
   },
   "app_name_short": {
@@ -303,9 +303,9 @@
     "message": "Weekly Distribution",
     "description": "Weekly distribution section header. Shown on the settings-history page."
   },
-  "last_9_months": {
-    "message": "$count$ in the Last 9 Months",
-    "description": "Last 9 months section header. Shown on the settings-history page.",
+  "last_12_months": {
+    "message": "$count$ in the Last 12 Months",
+    "description": "Last 12 months section header. Shown on the settings-history page.",
     "placeholders": {
       "count": {
         "content": "$1",

@@ -5,7 +5,8 @@
     "serve": "vue-cli-service serve",
     "dev": "vue-cli-service build --mode development --no-unsafe-inline --dest package/modules --watch",
     "build": "vue-cli-service build --mode production --no-unsafe-inline --dest package/modules",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "test:unit-debug": "vue-cli-service test:unit --inspect-brk"
   },
   "dependencies": {
     "d3": "^5.0.0",

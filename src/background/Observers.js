@@ -227,7 +227,8 @@ class HistoryObserver
       return;
     }
 
-    await this.history.addPomodoro(duration);
+    // await this.history.addPomodoro(duration);
+    await this.history.addPomodoro2();
   }
 }
 

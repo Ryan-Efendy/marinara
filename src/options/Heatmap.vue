@@ -5,7 +5,7 @@
 <style lang="scss">
 .heatmap {
   font-size: 14px;
-  margin-left: -10px;
+  margin-left: -100px;
 }
 .heatmap .day {
   fill: #eee;
@@ -38,24 +38,24 @@ import M from '../Messages';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-function createHeatmap(data, start, el) {
+function createHeatmap(data, start, end, el) {
   // Inspired by https://github.com/vinnyoodles/reddit-heatmap/blob/master/js/index.js.
   let max = Math.max(...Object.values(data));
 
-  const cellSize = 14;
+  const cellSize = 15;
   const colorCount = 4;
   const cellClass = 'day';
 
-  const width = 700;
+  const width = 1000;
   const height = 110;
-  const dx = 40;
+  const dx = 50;
 
   let formatColor = d3.scaleQuantize()
     .domain([0, max])
     .range(d3.range(colorCount).map(d => `color${d}`));
 
   let now = new Date();
-  let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  // let end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
   // Determine month label positions.
   let months = [];
@@ -184,7 +184,7 @@ function createHeatmap(data, start, el) {
 }
 
 export default {
-  props: ['pomodoros', 'start'],
+  props: ['pomodoros', 'start', 'end'],
   data() {
     return {
       cleanup: null
@@ -198,7 +198,7 @@ export default {
       if (this.cleanup) {
         this.cleanup();
       }
-      this.cleanup = createHeatmap(this.pomodoros || {}, this.start, this.$el);
+      this.cleanup = createHeatmap(this.pomodoros || {}, this.start, this.end, this.$el);
     }
   },
   watch: {
@@ -206,6 +206,9 @@ export default {
       this.updateHeatmap();
     },
     start(to) {
+      this.updateHeatmap();
+    },
+    end(to) {
       this.updateHeatmap();
     }
   }

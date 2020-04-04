@@ -225,9 +225,9 @@ class Messages
   get february_short() {
     return chrome.i18n.getMessage('february_short', []);
   }
-  get feedback() {
-    return chrome.i18n.getMessage('feedback', []);
-  }
+  // get feedback() {
+  //   return chrome.i18n.getMessage('feedback', []);
+  // }
   get fire_pager() {
     return chrome.i18n.getMessage('fire_pager', []);
   }
@@ -333,9 +333,9 @@ class Messages
   get large_clock() {
     return chrome.i18n.getMessage('large_clock', []);
   }
-  last_9_months(count) {
-    return chrome.i18n.getMessage('last_9_months', [count]);
-  }
+  // last_12_months(count) {
+  //   return chrome.i18n.getMessage('last_12_months', [count]);
+  // }
   get less_than_minute() {
     return chrome.i18n.getMessage('less_than_minute', []);
   }

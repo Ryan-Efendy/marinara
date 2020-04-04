@@ -69,13 +69,17 @@ class HistoryService extends Service
     this.history = history;
   }
 
-  async getStats(since) {
-    return await this.history.stats(since);
+  // async getStats(since) {
+  //   return await this.history.stats(since);
+  // }
+
+  async getStats2() {
+    return await this.history.stats2();
   }
 
-  async getCSV() {
-    return await this.history.toCSV();
-  }
+  // async getCSV() {
+  //   return await this.history.toCSV();
+  // }
 
   async getAll() {
     return await this.history.all();
@@ -83,6 +87,10 @@ class HistoryService extends Service
 
   async merge(history) {
     return await this.history.merge(history);
+  }
+
+  async merge2(history) {
+    return await this.history.merge2(history);
   }
 
   async clearHistory() {
@@ -169,10 +177,6 @@ class OptionsService extends Service
 
   async showHistoryPage() {
     return await this.showPage('history');
-  }
-
-  async showFeedbackPage() {
-    return await this.showPage('feedback');
   }
 }
 

@@ -10,6 +10,7 @@ class StorageManager extends EventEmitter
 
   async get() {
     let [payload, modified] = this._upgrade(await this.storage.get());
+    // let tmp = await this.storage.getBytesInUse();
     if (modified) {
       await this.storage.clear();
       await this.storage.set(payload);

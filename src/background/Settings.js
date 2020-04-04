@@ -26,7 +26,7 @@ class SettingsSchema
   get default() {
     return {
       focus: {
-        duration: 25,
+        duration: 0.01,
         timerSound: null,
         countdown: {
           host: null,
