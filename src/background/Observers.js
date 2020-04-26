@@ -74,7 +74,7 @@ class TimerSoundObserver
       // Cleanup any existing timer sound.
       this.timerSound && await this.timerSound.close();
 
-      if (phase === Phase.Focus && timerSoundSettings) {
+      if (phase === Phase.Focus || phase === Phase.LongBreak && timerSoundSettings) {
         this.timerSound = await createTimerSound(timerSoundSettings);
         this.timerSound.start();
       } else {
