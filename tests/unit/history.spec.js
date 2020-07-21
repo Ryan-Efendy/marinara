@@ -3,7 +3,6 @@ import { assert } from 'chai';
 import * as History from '@/background/History';
 
 describe('History', () => {
-  // debugger;
   it('merges empty history', () => {
     const basic = {
       pomodoros: [1],

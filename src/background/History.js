@@ -3,12 +3,11 @@ import StorageManager from './StorageManager';
 import RLE from './RLE';
 import Mutex from '../Mutex';
 import M from '../Messages';
-import moment from 'moment';
+
 class History
 {
   constructor() {
-
-    this.storage = new StorageManager(new HistorySchema(), Chrome.storage.local);
+    this.storage = new StorageManager(new HistorySchema(), Chrome.storage.sync);
     this.mutex = new Mutex();
   }
 
@@ -177,6 +176,9 @@ class History
   async stats2() {
     return this.mutex.exclusive(async () => {
       let { pomodoros } = await this.storage.get('pomodoros');
+      if (pomodoros === undefined || pomodoros === null) {
+        pomodoros = {};
+      }
 
       let total = 0;
       for (var year in pomodoros) {
