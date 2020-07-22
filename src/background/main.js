@@ -8,6 +8,7 @@ import { HistoryService, SoundsService, SettingsService, PomodoroService, Option
 import { BadgeObserver, TimerSoundObserver, ExpirationSoundObserver, NotificationObserver, HistoryObserver, CountdownObserver, MenuObserver } from './Observers';
 import { ServiceBroker } from '../Service';
 import * as Alarms from './Alarms';
+import firebase from 'firebase/app';
 
 async function run() {
   chrome.runtime.onUpdateAvailable.addListener(() => {
@@ -17,7 +18,17 @@ async function run() {
     // See https://developer.chrome.com/apps/runtime#event-onUpdateAvailable.
   });
 
-  let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.sync);
+  firebase.initializeApp({
+    apiKey: "AIzaSyACuCp3OtnKvo1Pb0LVHF-OJrpw_EKOXOo", // fake api key
+    authDomain: "marinara-da936.firebaseapp.com",
+    databaseURL: "https://marinara-da936.firebaseio.com",
+    projectId: "marinara-da936",
+    storageBucket: "marinara-da936.appspot.com",
+    messagingSenderId: "1045080728495",
+    appId: "1:1045080728495:web:877f08b8f4d78a8907055a"
+  });
+
+  let settingsManager = new StorageManager(new SettingsSchema(), Chrome.storage.local);
   let settings = await PersistentSettings.create(settingsManager);
   let timer = new PomodoroTimer(settings);
   let history = new History();
