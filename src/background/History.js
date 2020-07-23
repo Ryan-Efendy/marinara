@@ -81,6 +81,7 @@ class History {
 
   async stats2() {
     return this.mutex.exclusive(async () => {
+      debugger;
       this.pomodoros = await this.getPomodoros();
       // await this.storage.get('pomodoros');
       // if (pomodoros === undefined || pomodoros === null) {
@@ -95,11 +96,19 @@ class History {
         }
       }
 
+      let delta = total === 0 ? 0 : (new Date() - Object.keys(this.pomodoros[Object.keys(this.pomodoros)[0]])[0]); // gets the first key's key
+      let dayCount = Math.max(delta / 1000 / 60 / 60 / 24, 1);
+      let weekCount = Math.max(dayCount / 7, 1);
+      let monthCount = Math.max(dayCount / (365.25 / 12), 1);
+
       return {
         pomodoros: this.pomodoros,
-        day: this.countSinceToday(this.pomodoros['2020']),
+        day: this.countSinceToday(this.pomodoros['2020']), // Object.keys(obj3)[Object.keys(obj3).length-1]
+        dayAverage: total / dayCount,
         week: this.countSinceThisWeek(this.pomodoros['2020']),
+        weekAverage: total / weekCount,
         month: this.countSinceThisMonth(this.pomodoros['2020']),
+        monthAverage: total / monthCount,
         // period: this.countSince2(pomodoros['2020'], new Date(since)),
         total: total
       };
